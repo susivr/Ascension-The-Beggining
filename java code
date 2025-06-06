@@ -1,0 +1,60 @@
+import javax.swing.*;
+import java.awt.*; // Necesario para usar Color y Font
+
+public class AscensionGUI {
+
+    public static void main(String[] args) {
+        new GameWindow().createAndShowGUI();
+    }
+}
+
+class GameWindow {
+
+    public void createAndShowGUI() {
+        // Crear la ventana
+        JFrame frame = new JFrame("Ascension: The Beginning");
+        frame.setSize(500, 350);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+
+        // Establecer color de fondo (oscuro fantasía)
+        frame.getContentPane().setBackground(new Color(30, 30, 40)); // gris oscuro azulado
+
+        // Crear un label con fuente personalizada
+        JLabel label = new JLabel("Welcome to Ascension!");
+        label.setBounds(20, 20, 400, 30);
+        label.setForeground(new Color(180, 150, 255)); // lavanda claro
+        label.setFont(new Font("Serif", Font.BOLD, 20)); // Cambiar fuente a estilo elegante
+
+        // Campo de texto con fondo oscuro y texto claro
+        JTextField textField = new JTextField();
+        textField.setBounds(20, 70, 250, 30);
+        textField.setBackground(new Color(50, 50, 70)); // gris azulado
+        textField.setForeground(Color.WHITE); // texto blanco
+        textField.setCaretColor(Color.WHITE); // cursor blanco
+
+        // Botón estilizado
+        JButton button = new JButton("Start Adventure");
+        button.setBounds(20, 120, 180, 35);
+        button.setBackground(new Color(90, 20, 140)); // púrpura oscuro
+        button.setForeground(Color.WHITE); // texto blanco
+        button.setFont(new Font("SansSerif", Font.BOLD, 14));
+
+        // Acción del botón
+        button.addActionListener(e -> {
+            String playerName = textField.getText();
+            if (!playerName.isEmpty()) {
+                label.setText("Prepare yourself, " + playerName + "!");
+            } else {
+                label.setText("Enter your name, brave one!");
+            }
+        });
+
+        // Agregar componentes
+        frame.add(label);
+        frame.add(textField);
+        frame.add(button);
+
+        frame.setVisible(true);
+    }
+}
